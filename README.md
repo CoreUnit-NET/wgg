@@ -12,7 +12,7 @@ You need to define env vars.
 Also loads .env files.
 
 Env vars:
-````bash
+```bash
 WGG_SUBNET=10.20.30.0/24
 WGG_NODE1=<node1-ip>:55333
 WGG_NODE2=<node2-ip>:55333
