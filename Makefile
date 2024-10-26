@@ -68,6 +68,12 @@ init:
 	@echo "building..."
 	@make -s build
 
+## air: starts the go bin in air watch mode
+.PHONY: air
+air:
+	@go install github.com/air-verse/air@v1
+	@air
+
 ## dev: starts a dev docker container
 .PHONY: dev
 dev:
