@@ -1,6 +1,6 @@
 # WireGuardGenerator
-![CI/CD](https://github.com/noblemajo/wgg/actions/workflows/go-bin-release.yml/badge.svg)
-![CI/CD](https://github.com/noblemajo/wgg/actions/workflows/go-test-build.yml/badge.svg)  
+![CI/CD](https://github.com/CoreUnit-NET/wgg/actions/workflows/go-bin-release.yml/badge.svg)
+![CI/CD](https://github.com/CoreUnit-NET/wgg/actions/workflows/go-test-build.yml/badge.svg)  
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fwgg)
 ![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fwgg)
@@ -43,7 +43,7 @@ None windows system with `go` or `wget & tar` installed.
 ###### *For this section go is required, check out the [install go guide](#install-go).*
 
 ```sh
-go install https://github.com/NobleMajo/wgg
+go install https://github.com/CoreUnit-NET/wgg
 ```
 
 ## Install via wget
@@ -52,7 +52,7 @@ BIN_DIR="/usr/local/bin"
 WGG_VERSION="1.3.3"
 
 rm -rf $BIN_DIR/wgg
-wget https://github.com/NobleMajo/wgg/releases/download/v$WGG_VERSION/wgg-v$WGG_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
+wget https://github.com/CoreUnit-NET/wgg/releases/download/v$WGG_VERSION/wgg-v$WGG_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
 tar -xzvf /tmp/wgg.tar.gz -C $BIN_DIR/ wgg
 rm /tmp/wgg.tar.gz
 ```
@@ -62,7 +62,7 @@ rm /tmp/wgg.tar.gz
 
 Clone the repo:
 ```sh
-git clone https://github.com/NobleMajo/wgg.git
+git clone https://github.com/CoreUnit-NET/wgg.git
 cd wgg
 ```
 
