@@ -6,6 +6,20 @@
 ![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fwgg)
 ![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fwgg)
 
+Generates basic p2p node and client configs with private and public keys.
+You need to define env vars.
+
+Also loads .env files.
+
+Env vars:
+````bash
+WGG_SUBNET=10.20.30.0/24
+WGG_NODE1=<node1-ip>:55333
+WGG_NODE2=<node2-ip>:55333
+WGG_NODE3=<node3-ip>:55333
+WGG_CLIENT_COUNT=5
+WGG_OUT_DIR=wgout
+```
 
 # Table of Contents
 - [WireGuardGenerator](#wireguardgenerator)
