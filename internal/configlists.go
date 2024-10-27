@@ -32,8 +32,6 @@ func PrintClients(
 	for _, client := range clientList {
 		fmt.Println(
 			"- #" + strconv.Itoa(client.ID) +
-				"| <client>:" +
-				strconv.Itoa(client.Port) +
 				" > " + client.WireGuardSubnetIP(subnet).String(),
 		)
 	}
@@ -42,24 +40,58 @@ func PrintClients(
 func GenerateNodeConfigs(
 	subnet *net.IPNet,
 	outDir string,
+	keyDir string,
 	nodeList []WggNode,
 	clientList []WggClient,
 ) error {
 	var selfConf string
+	var newConf string
 	var otherConfs []string
+	var err error
 	for _, node := range nodeList {
 		otherConfs = []string{}
 
 		for _, node2 := range nodeList {
 			if node.ID == node2.ID {
-				selfConf = node2.WgConf(subnet, true)
+				selfConf, err = GenWgClientConfPart(
+					node2,
+					keyDir,
+					subnet,
+					node.TargetID(),
+				)
+
+				if err != nil {
+					return err
+				}
 			} else {
-				otherConfs = append(otherConfs, node2.WgConf(subnet, false))
+				newConf, err = GenWgClientConfPart(
+					node2,
+					keyDir,
+					subnet,
+					node.TargetID(),
+				)
+
+				if err != nil {
+					return err
+				}
+
+				otherConfs = append(otherConfs, newConf)
 			}
 		}
 
 		for _, client := range clientList {
-			otherConfs = append(otherConfs, client.WgConf(subnet, false))
+			newConf, err = GenWgClientConfPart(
+				client,
+				keyDir,
+				subnet,
+				node.TargetID(),
+			)
+
+			if err != nil {
+				return err
+			}
+
+			otherConfs = append(otherConfs, newConf)
 		}
 
 		outFile := outDir + "/node." + strconv.Itoa(node.ID) + ".wg.conf"
@@ -76,17 +108,41 @@ func GenerateNodeConfigs(
 func GenerateClientConfigs(
 	subnet *net.IPNet,
 	outDir string,
+	keyDir string,
 	nodeList []WggNode,
 	clientList []WggClient,
 ) error {
 	var selfConf string
+	var newConf string
 	var otherConfs []string
+	var err error
 	for _, client := range clientList {
-		selfConf = client.WgConf(subnet, true)
+		selfConf, err = GenWgClientConfPart(
+			client,
+			keyDir,
+			subnet,
+			client.TargetID(),
+		)
+
+		if err != nil {
+			return err
+		}
+
 		otherConfs = []string{}
 
 		for _, node := range nodeList {
-			otherConfs = append(otherConfs, node.WgConf(subnet, false))
+			newConf, err = GenWgClientConfPart(
+				node,
+				keyDir,
+				subnet,
+				client.TargetID(),
+			)
+
+			if err != nil {
+				return err
+			}
+
+			otherConfs = append(otherConfs, newConf)
 		}
 
 		outFile := outDir + "/client." + strconv.Itoa(client.ID) + ".wg.conf"
@@ -99,10 +155,7 @@ func GenerateClientConfigs(
 	return nil
 }
 
-func InitNodeList(
-	privateNodeKey string,
-	publicNodeKey string,
-) ([]WggNode, error) {
+func InitNodeList() ([]WggNode, error) {
 	nodeRawDataList := []string{}
 
 	var i int = 0
@@ -121,8 +174,6 @@ func InitNodeList(
 		node, err := NewWggNode(
 			i,
 			nodeRawData,
-			privateNodeKey,
-			publicNodeKey,
 		)
 
 		if err != nil {
@@ -135,10 +186,7 @@ func InitNodeList(
 	return nodeList, nil
 }
 
-func InitClientList(
-	privateClientKey string,
-	publicClientKey string,
-) ([]WggClient, error) {
+func InitClientList() ([]WggClient, error) {
 	clientCountString := os.Getenv("WGG_CLIENT_COUNT")
 	if len(clientCountString) <= 0 {
 		return nil, errors.New("the WGG_CLIENT_COUNT env var is not set or empty")
@@ -163,8 +211,6 @@ func InitClientList(
 
 			client := NewWggClient(
 				i,
-				privateClientKey,
-				publicClientKey,
 			)
 
 			clientList = append(clientList, client)

@@ -33,23 +33,25 @@ func CleanUpOutDir(outDir string) error {
 // If the path is not absolute, it prefixes it with the current working directory.
 // If the directory does not exist, it attempts to create it with the appropriate permissions.
 // Returns the absolute path of the output directory or an error if any operation fails.
-func InitOutDir() (string, error) {
+func InitOutDir() (string, string, error) {
 	outDir := os.Getenv("WGG_OUT_DIR")
 	if len(outDir) <= 0 {
-		return "", errors.New("the WGG_OUT_DIR env var is not set or empty")
+		return "", "", errors.New("the WGG_OUT_DIR env var is not set or empty")
 	} else if !strings.HasPrefix(outDir, "/") {
 		outDir = FatalCwd() + "/" + outDir
 	}
 
-	_, err := os.Stat(outDir)
+	keyDir := outDir + "/keys"
+
+	_, err := os.Stat(keyDir)
 	if os.IsNotExist(err) {
-		err = os.MkdirAll(outDir, 0755)
+		err = os.MkdirAll(keyDir, 0755)
 		if err != nil {
-			return "", errors.New("Error creating outDir at '" + outDir + "': " + err.Error())
+			return "", "", errors.New("Error creating outDir at '" + keyDir + "': " + err.Error())
 		}
 	}
 
-	return outDir, nil
+	return outDir, keyDir, nil
 }
 
 func Cwd() (string, error) {
