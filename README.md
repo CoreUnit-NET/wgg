@@ -13,12 +13,12 @@ Also loads .env files.
 
 Env vars:
 ```bash
-WGG_SUBNET=10.20.30.0/24
-WGG_NODE1=<node1-ip>:55333
+WGG_SUBNET=10.10.10.0/24
+WGG_NODE1=<node1-ip>:55333 # if you subsequently adjust or add a node, all configs must be adjusted
 WGG_NODE2=<node2-ip>:55333
 WGG_NODE3=<node3-ip>:55333
-WGG_CLIENT_COUNT=5
-WGG_OUT_DIR=wgout
+WGG_CLIENT_COUNT=10 #tip: choose a number that is sufficient for users in the long term, whereby all node configs must be updated for each new user
+WGG_OUT_DIR=config
 ```
 
 # Table of Contents
