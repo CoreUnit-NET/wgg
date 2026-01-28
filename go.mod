@@ -1,4 +1,4 @@
-module coreunit.net/wgg
+module github.com/CoreUnit-NET/wgg
 
 go 1.23
 
