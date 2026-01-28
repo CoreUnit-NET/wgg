@@ -6,7 +6,7 @@ import (
 	"net"
 	"strconv"
 
-	"coreunit.net/wgg/lib/netutils"
+	"github.com/CoreUnit-NET/wgg/lib/netutils"
 )
 
 type WggTarget interface {

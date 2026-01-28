@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net"
 
-	"coreunit.net/wgg/lib/netutils"
+	"github.com/CoreUnit-NET/wgg/lib/netutils"
 )
 
 type WggClient struct {

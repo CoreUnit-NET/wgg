@@ -6,7 +6,7 @@ import (
 	"net"
 	"os"
 
-	wgg "coreunit.net/wgg/internal"
+	wgg "github.com/CoreUnit-NET/wgg/internal"
 	"github.com/joho/godotenv"
 )
 
