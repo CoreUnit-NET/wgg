@@ -1,12 +1,30 @@
 # WireGuardGenerator
 
-*This is a prove of concept and public test!*  
-Generates basic p2p node and client configs with private and public keys.
-You need to define env vars.
+![CI/CD](https://github.com/NobleMajo/wgg/actions/workflows/go-bin-release.yml/badge.svg)
+![CI/CD](https://github.com/NobleMajo/wgg/actions/workflows/go-test-build.yml/badge.svg)  
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
+![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
+![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
 
-Also loads .env files.
+`wgg` simply generates server p2p node and client configurations.
 
-Env vars:
+# Table of Contents
+
+- [Configuration](#configuration)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Quick help](#quick-help)
+- [Install via go](#install-via-go)
+- [Install via wget](#install-via-wget)
+- [Build requirements](#build-requirements)
+- [Build Instructions](#build-instructions)
+- [Install go](#install-go)
+
+## Configuration
+
+WGG is fully configured via env vars or a .env file:
+
 ```bash
 WGG_SUBNET=10.10.10.0/24
 WGG_NODE1=<node1-ip>:55333 # if you subsequently adjust or add a node, all configs must be adjusted
@@ -16,61 +34,87 @@ WGG_CLIENT_COUNT=10 #tip: choose a number that is sufficient for users in the lo
 WGG_OUT_DIR=config
 ```
 
-# Table of Contents
-- [WireGuardGenerator](#wireguardgenerator)
-- [Table of Contents](#table-of-contents)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Install via go](#install-via-go)
-  - [Install via wget](#install-via-wget)
-  - [Build](#build)
-  - [Install go](#install-go)
-- [Contributing](#contributing)
-- [License](#license)
-- [Disclaimer](#disclaimer)
-
-# Getting Started
+# User Guide
 
 ## Requirements
-None windows system with `go` or `wget & tar` installed.
 
-## Install via go
-###### *For this section go is required, check out the [install go guide](#install-go).*
+Linux- or macos-like systems with `go` or `wget & tar` installed.
+
+## Getting Started
+
+Start the latest repo version directly without leaving stuff in the current working dir:
 
 ```sh
-go install https://github.com/CoreUnit-NET/wgg
+go run github.com/NobleMajo/wgg@latest
+```
+
+## Quick help
+
+```sh
+go run github.com/NobleMajo/wgg@latest -h
+```
+
+## Install via go
+
+###### _For this section go is required, check out the [install go guide](#install-go)._
+
+```sh
+go install github.com/NobleMajo/wgg@latest
 ```
 
 ## Install via wget
-```sh
-BIN_DIR="/usr/local/bin"
-WGG_VERSION="1.3.3"
 
-rm -rf $BIN_DIR/wgg
-wget https://github.com/CoreUnit-NET/wgg/releases/download/v$WGG_VERSION/wgg-v$WGG_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
-tar -xzvf /tmp/wgg.tar.gz -C $BIN_DIR/ wgg
+```sh
+export CUSTOM_BIN_DIR="/usr/local/bin" # <- change if needed
+export CUSTOM_VERSION="" # <- set latest version here
+
+rm -rf $CUSTOM_BIN_DIR/wgg
+wget https://github.com/NobleMajo/wgg/releases/download/v$CUSTOM_VERSION/wgg-v$CUSTOM_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
+tar -xzvf /tmp/wgg.tar.gz -C $CUSTOM_BIN_DIR/ wgg
 rm /tmp/wgg.tar.gz
 ```
 
-## Build
-###### *For this section go is required, check out the [install go guide](#install-go).*
+# Build
+
+## Build requirements
+
+To build, you need to install go.
+The required go version is in the `go.mod` file.
+
+## Build Instructions
+
+###### _For this section go is required, check out the [install go guide](#install-go)._
 
 Clone the repo:
+
 ```sh
-git clone https://github.com/CoreUnit-NET/wgg.git
+git clone https://github.com/NobleMajo/wgg.git
 cd wgg
 ```
 
 Build the wgg binary from source code:
+
 ```sh
 make build
 ./wgg
 ```
 
+# Development
+
+###### _For this section go is required, check out the [install go guide](#install-go)._
+
+This part is work in progress, I want to use 'AIR' as auto-reload tool:
+
+```sh
+make dev #WIP
+```
+
 ## Install go
+
 The required go version for this project is in the `go.mod` file.
 
 To install and update go, I can recommend the following repo:
+
 ```sh
 git clone git@github.com:udhos/update-golang.git golang-updater
 cd golang-updater
@@ -78,12 +122,15 @@ sudo ./update-golang.sh
 ```
 
 # Contributing
+
 Contributions to this project are welcome!  
 Interested users can refer to the guidelines provided in the [CONTRIBUTING.md](CONTRIBUTING.md) file to contribute to the project and help improve its functionality and features.
 
 # License
+
 This project is licensed under the [MIT license](LICENSE), providing users with flexibility and freedom to use and modify the software according to their needs.
 
 # Disclaimer
+
 This project is provided without warranties.  
 Users are advised to review the accompanying license for more information on the terms of use and limitations of liability.
