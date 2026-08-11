@@ -1,11 +1,11 @@
 # WireGuardGenerator
 
-![CI/CD](https://github.com/NobleMajo/wgg/actions/workflows/go-bin-release.yml/badge.svg)
-![CI/CD](https://github.com/NobleMajo/wgg/actions/workflows/go-test-build.yml/badge.svg)  
+![CI/CD](https://github.com/CoreUnit-NET/wgg/actions/workflows/go-bin-release.yml/badge.svg)
+![CI/CD](https://github.com/CoreUnit-NET/wgg/actions/workflows/go-test-build.yml/badge.svg)  
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
-![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
-![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FNobleMajo%2Fwgg)
+![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FCoreUnit-NET%2Fwgg)
+![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FCoreUnit-NET%2Fwgg)
+![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2FCoreUnit-NET%2Fwgg)
 
 `wgg` simply generates server p2p node and client configurations.
 
@@ -45,13 +45,13 @@ Linux- or macos-like systems with `go` or `wget & tar` installed.
 Start the latest repo version directly without leaving stuff in the current working dir:
 
 ```sh
-go run github.com/NobleMajo/wgg@latest
+go run github.com/CoreUnit-NET/wgg@latest
 ```
 
 ## Quick help
 
 ```sh
-go run github.com/NobleMajo/wgg@latest -h
+go run github.com/CoreUnit-NET/wgg@latest -h
 ```
 
 ## Install via go
@@ -59,7 +59,7 @@ go run github.com/NobleMajo/wgg@latest -h
 ###### _For this section go is required, check out the [install go guide](#install-go)._
 
 ```sh
-go install github.com/NobleMajo/wgg@latest
+go install github.com/CoreUnit-NET/wgg@latest
 ```
 
 ## Install via wget
@@ -69,7 +69,7 @@ export CUSTOM_BIN_DIR="/usr/local/bin" # <- change if needed
 export CUSTOM_VERSION="" # <- set latest version here
 
 rm -rf $CUSTOM_BIN_DIR/wgg
-wget https://github.com/NobleMajo/wgg/releases/download/v$CUSTOM_VERSION/wgg-v$CUSTOM_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
+wget https://github.com/CoreUnit-NET/wgg/releases/download/v$CUSTOM_VERSION/wgg-v$CUSTOM_VERSION-linux-amd64.tar.gz -O /tmp/wgg.tar.gz
 tar -xzvf /tmp/wgg.tar.gz -C $CUSTOM_BIN_DIR/ wgg
 rm /tmp/wgg.tar.gz
 ```
@@ -88,7 +88,7 @@ The required go version is in the `go.mod` file.
 Clone the repo:
 
 ```sh
-git clone https://github.com/NobleMajo/wgg.git
+git clone https://github.com/CoreUnit-NET/wgg.git
 cd wgg
 ```
 
