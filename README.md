@@ -13,17 +13,7 @@
 
 `wgg` simply generates server p2p node and client configurations.
 
-# Table of Contents
-
-- [Configuration](#configuration)
-- [Requirements](#requirements)
-- [Getting Started](#getting-started)
-- [Quick help](#quick-help)
-- [Install via go](#install-via-go)
-- [Install via wget](#install-via-wget)
-- [Build requirements](#build-requirements)
-- [Build Instructions](#build-instructions)
-- [Install go](#install-go)
+<details><summary><strong>Configuration</strong></summary>
 
 ## Configuration
 
@@ -37,6 +27,10 @@ WGG_NODE3=<node3-ip>:55333
 WGG_CLIENT_COUNT=10 #tip: choose a number that is sufficient for users in the long term, whereby all node configs must be updated for each new user
 WGG_OUT_DIR=config
 ```
+
+</details>
+
+<details><summary><strong>User Guide</strong></summary>
 
 # User Guide
 
@@ -103,6 +97,10 @@ make build
 ./wgg
 ```
 
+</details>
+
+<details><summary><strong>Development</strong></summary>
+
 # Development
 
 ###### _For this section go is required, check out the [install go guide](#install-go)._
@@ -124,6 +122,8 @@ git clone git@github.com:udhos/update-golang.git golang-updater
 cd golang-updater
 sudo ./update-golang.sh
 ```
+
+</details>
 
 <div align="center">
 
